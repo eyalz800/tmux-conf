@@ -1,6 +1,10 @@
 tmux-conf
 =========
 
+Screenshots
+-----------
+<img src="screenshots/image1.png">
+
 Installation
 ------------
 * Install tmux:
