@@ -24,6 +24,8 @@ if [[ -z "$TMUX" ]]; then
     if [ $? != 0 ]; then
         tmux new-session -s "main"
     fi
+else
+    export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
 fi
 ```
 
@@ -39,5 +41,7 @@ if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
     if [ $? != 0 ]; then
         tmux new-session -s "main"
     fi
+else
+    export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
 fi
 ```
