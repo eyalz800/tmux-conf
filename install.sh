@@ -4,7 +4,7 @@ set -e
 
 apt update
 apt install -y \
-    build-essential gcc autotools-dev automake libncurses5-dev libncursesw5-dev libevent-dev xclip bison
+    build-essential gcc autotools-dev automake libncurses5-dev libncursesw5-dev libevent-dev xclip bison pkg-config
 
 rm -rf tmux
 git clone https://github.com/tmux/tmux.git
