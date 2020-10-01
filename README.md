@@ -14,8 +14,6 @@ sudo ./install.sh
 
 * Add the following lines to your ~/.bashrc file for automatic activation:
 ```
-printf "\e[?2004l"
-
 if [[ -z "$TMUX" ]]; then
     tmux a -t "main"
     if [ $? != 0 ]; then
@@ -28,8 +26,6 @@ fi
 
 * Add the following lines to your ~/.bashrc file for automatic activation in remote sessions only:
 ```
-printf "\e[?2004l"
-
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
     tmux a -t "main"
     if [ $? != 0 ]; then
