@@ -14,6 +14,7 @@ apt install -y \
 rm -rf tmux
 git clone https://github.com/tmux/tmux.git
 cd tmux
+git reset --hard 022d0210c5afa4e516183bf19715316ccca5d240
 ./autogen.sh
 ./configure
 make -j
