@@ -18,7 +18,7 @@ else
     rm -rf tmux
     git clone https://github.com/tmux/tmux.git
     cd tmux
-    git reset --hard 3.2a
+    git reset --hard 3.3
     ./autogen.sh
     ./configure
     make -j
