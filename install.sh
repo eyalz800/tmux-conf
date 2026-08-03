@@ -6,7 +6,7 @@ if [ -x "$(command -v brew)" ]; then
 	brew install tmux
     cp .tmux.conf ~/.tmux.conf
 else
-    if [ -e $SUDO_USER ]; then
+    if [ "$(id -u)" -ne 0 ]; then
         sudo -E ./install.sh
         exit
     fi
@@ -26,7 +26,18 @@ else
     cd ..
     rm -rf tmux
 
-    cp .tmux.conf ~/.tmux.conf
-    chown $SUDO_USER:$SUDO_GID ~/.tmux.conf
+    # Do not rely on $HOME while running as root, sudo may reset it to /root
+    # depending on the sudo implementation and configuration. Resolve the
+    # invoking user's home directory explicitly instead.
+    if [ -n "$SUDO_USER" ]; then
+        user_home=$(getent passwd "$SUDO_USER" | cut -d: -f6)
+    else
+        user_home=$HOME
+    fi
+
+    cp .tmux.conf "$user_home/.tmux.conf"
+    if [ -n "$SUDO_USER" ]; then
+        chown "$SUDO_USER:$SUDO_GID" "$user_home/.tmux.conf"
+    fi
 fi
 
